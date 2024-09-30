@@ -1,0 +1,43 @@
+<h1 *ngIf="novoMatricula">Nova Matricula</h1>
+<h1 *ngIf="!novoMatricula">Editar Matricula</h1>
+<div *ngIf="mensagem.length > 0" class="alert alert-danger alert-dismissible fade show" role="alert">
+    <h4 class="alert-heading">Erro</h4>
+    <p>{{mensagem}}</p>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+<div class="well">
+    <form #formMatricula="ngForm">
+        <div class="form-group">
+            <label for="aluno">Aluno:</label>
+            <select class="form-control" id="aluno" name="aluno" [(ngModel)]="matricula.aluno" #aluno="ngModel"
+                required>
+                <option *ngFor="let aluno of listaAlunos" [ngValue]="aluno">{{ aluno.nome }}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="curso">Curso:</label>
+            <select class="form-control" id="curso" name="curso" [(ngModel)]="matricula.curso" #curso="ngModel"
+                required>
+                <option *ngFor="let curso of listaCursos" [ngValue]="curso">{{ curso.nome }}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="dataMatricula">Data da Matricula:</label>
+            <input type="date" class="form-control" id="dataMatricula" name="dataMatricula"
+                [(ngModel)]="matricula.dataMatricula" #dataMatricula="ngModel" required>
+        </div>
+        <div class="form-group">
+            <label for="nota">Nota:</label>
+            <input type="text" class="form-control" id="nota" name="nota" [(ngModel)]="matricula.nota" #nota="ngModel"
+                required>
+        </div>
+        <button type="button" class="btn btn-primary" (click)="salvar()"
+            [disabled]="!formMatricula.form.valid || botaoDesabilitado">
+            <i *ngIf="!loading" class="fa fa-save" ariahidden="true"></i>
+            <span *ngIf="loading" class="spinner-border spinner-bordersm mr-1"></span> Salvar
+        </button>
+        <a class="btn btn-secondary" [routerLink]="['/matriculas']">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar
+        </a>
+    </form>
+</div>

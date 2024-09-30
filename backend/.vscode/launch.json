@@ -1,0 +1,14 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-Web2Application<web2>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "br.net.java.web2.Web2Application",
+      "projectName": "web2",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}

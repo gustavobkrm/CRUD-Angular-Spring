@@ -1,0 +1,41 @@
+<h1>Cursos</h1>
+<div *ngIf="mensagem.length > 0" class="alert alert-danger alert-dismissible fade show" role="alert">
+    <h4 class="alert-heading">Erro</h4>
+    <p>{{mensagem}}</p>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+<table class="table table-striped table-bordered table-hover">
+    <tbody>
+        <tr>
+            <th>Nome</th>
+            <th>Link</th>
+            <th class="text-center">
+                <a [routerLink]="['/cursos/novo']" href="#" title="Novo" alt="Novo" class="btn btn-xs btn-success">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                    Novo
+                </a>
+            </th>
+        </tr>
+        <tr *ngFor="let curso of cursos">
+            <td> {{curso.nome }} </td>
+            <td> {{curso.link}} </td>
+            <td class="text-center" style="width: 300px">
+                <button type="button" class="btn btn-xs btn-info" (click)="abrirModal(curso)">
+                    <i class="fa fa-eye" aria-hidden="true"></i>
+                    Ver
+                </button>
+                <a [routerLink]="['/cursos/editar', curso.id]" href="#" title="Editar" alt="Editar"
+                    class="btn btn-xs btn-warning">
+                    <i class="fa fa-edit" aria-hidden="true"></i>
+                    Editar
+                </a>
+                <a href="#" title="Remover" alt="Remover" class="btn btn-xs btn-danger"
+                    (click)="remover($event, curso)">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                    Remover
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p *ngIf="cursos.length==0">Nenhum curso cadastrado.</p>

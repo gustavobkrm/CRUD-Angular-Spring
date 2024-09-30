@@ -1,0 +1,14 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Aluno</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.close()"></button>
+</div>
+<div class="modal-body">
+    <p>Nome: {{ aluno.nome }} </p>
+    <p>CPF: {{ aluno.cpf }}</p>
+    <p>Email: {{ aluno.email }}</p>
+    <p>Data de Nascimento: {{ aluno.dataNasc }}</p>
+
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close()">Fechar</button>
+</div>
